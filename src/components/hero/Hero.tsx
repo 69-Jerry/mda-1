@@ -14,11 +14,11 @@ const Hero = () => {
         <div className="absolute -bottom-20 -left-20 w-[400px] h-[400px] bg-mda-pink/5 rounded-full blur-[100px] animate-pulse-glow delay-1000" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-8 w-full grid lg:grid-cols-2 gap-20 items-center relative z-10">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 w-full grid lg:grid-cols-2 gap-12 md:gap-20 items-center relative z-10">
         {/* Text Content */}
-        <div className="space-y-12 animate-reveal">
-          <div className="space-y-6">
-            <div className="inline-flex items-center gap-3 px-5 py-2 glass-card rounded-full border-white/10">
+        <div className="space-y-8 md:space-y-12 animate-reveal py-10 lg:py-0">
+          <div className="space-y-4 md:space-y-6">
+            <div className="inline-flex items-center gap-3 px-4 py-2 glass-card rounded-full border-white/10">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-mda-pink opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-mda-pink"></span>
@@ -28,24 +28,24 @@ const Hero = () => {
               </span>
             </div>
 
-            <h1 className="text-8xl lg:text-[10rem] font-display leading-[0.8] uppercase text-white tracking-tighter">
+            <h1 className="text-5xl md:text-8xl lg:text-[10rem] font-display leading-[0.9] lg:leading-[0.8] uppercase text-white tracking-tighter">
               VISIT <br />
               <span className="text-mda-pink italic font-serif normal-case drop-shadow-2xl text-glow">
                 Mepe
               </span>
             </h1>
 
-            <p className="font-body text-xl text-white/60 leading-relaxed max-w-xl border-l-2 border-mda-pink/30 pl-8">
+            <p className="font-body text-lg md:text-xl text-white/60 leading-relaxed max-w-xl border-l-2 border-mda-pink/30 pl-6 md:pl-8">
               Experience the soul of the Volta. A community of resilient people,
               rich heritage, and boundless future potential.
             </p>
           </div>
 
           <div className="flex flex-wrap gap-6">
-            <button className="premium-gradient text-white px-12 py-6 rounded-2xl font-bold tracking-widest text-xs uppercase hover:shadow-[0_30px_60px_-15px_rgba(93,26,26,0.5)] transform hover:-translate-y-1.5 active:scale-95 transition-all border border-white/10 group">
+            <button className="premium-gradient text-white px-8 py-4 md:px-12 md:py-6 rounded-xl md:rounded-2xl font-bold tracking-widest text-[10px] md:text-xs uppercase hover:shadow-[0_30px_60px_-15px_rgba(93,26,26,0.5)] transform hover:-translate-y-1.5 active:scale-95 transition-all border border-white/10 group">
               Explore Heritage
               <ArrowRight
-                className="inline ml-3 group-hover:translate-x-2 transition-transform"
+                className="inline ml-2 md:ml-3 group-hover:translate-x-2 transition-transform"
                 size={16}
               />
             </button>

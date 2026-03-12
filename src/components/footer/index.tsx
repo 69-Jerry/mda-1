@@ -25,9 +25,9 @@ const Footer = () => {
           <Link to="/" className="flex items-center gap-4 group">
             <div className="w-20 h-20 bg-white/10 rounded-3xl flex items-center justify-center backdrop-blur-md border border-white/10 group-hover:scale-105 transition-transform duration-500">
               <img
-                src="/mda-logo.png"
+                src="/logo-new.png"
                 alt="Mepe MDA Logo"
-                className="w-14 h-14 object-contain brightness-0 invert"
+                className="w-14 h-14 object-contain "
               />
             </div>
             <div className="flex flex-col">
