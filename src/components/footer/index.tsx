@@ -129,7 +129,7 @@ const Footer = () => {
         </div>
 
         {/* Newsletter CTA */}
-        <div className="glass-card p-10 rounded-[3rem] border-white/5 h-fit relative overflow-hidden group">
+        <div className="p-10 rounded-[3rem] h-fit relative overflow-hidden group">
           <div className="absolute top-0 right-0 w-24 h-24 bg-mda-pink/10 rounded-full blur-2xl -translate-y-12 translate-x-12 group-hover:scale-150 transition-transform duration-700" />
 
           <h4 className="text-lg font-display mb-4 tracking-widest text-white uppercase">
@@ -143,7 +143,7 @@ const Footer = () => {
             <div className="relative">
               <input
                 type="email"
-                placeholder="Secure email link"
+                placeholder="Email"
                 className="w-full bg-white/5 border border-white/10 rounded-2xl py-4 px-6 text-sm focus:outline-none focus:border-mda-pink transition-all pr-14 placeholder:text-white/20"
               />
               <button className="absolute right-2 top-2 bottom-2 bg-mda-pink text-mda-maroon px-4 rounded-xl hover:shadow-[0_0_15px_rgba(244,114,182,0.4)] transition-all active:scale-95">
@@ -155,13 +155,12 @@ const Footer = () => {
       </div>
 
       {/* Bottom Bar */}
-      <div className="max-w-7xl mx-auto px-8 pt-12 border-t border-white/5 flex flex-col lg:flex-row justify-between items-center gap-8 relative z-10">
-        <div className="text-[9px] font-bold tracking-[0.4em] text-white/20 uppercase font-body text-center lg:text-left">
+      <div className="max-w-7xl mx-auto px-8 pt-12 border-t border-white/50 flex flex-col lg:flex-row justify-between items-center gap-8 relative z-10">
+        <div className="text-[9px] font-bold tracking-[0.4em] text-white/100 uppercase font-body text-center lg:text-left">
           &copy; {currentYear} MEPE DEVELOPMENT ASSOCIATION.{" "}
-          <br className="md:hidden" /> ALPHA VERSION 2.1.0
         </div>
 
-        <div className="flex flex-wrap justify-center gap-10 text-[9px] font-bold tracking-[0.3em] text-white/20 uppercase font-body">
+        <div className="flex flex-wrap justify-center gap-10 text-[9px] font-bold tracking-[0.3em] text-white/100 uppercase font-body">
           <Link
             to="/privacy-policy"
             className="hover:text-mda-pink transition-colors"
@@ -180,8 +179,8 @@ const Footer = () => {
             rel="noopener noreferrer"
             className="group"
           >
-            Digital Architecture by{" "}
-            <span className="text-white/40 group-hover:text-mda-pink transition-colors">
+            Designed & Developed by{" "}
+            <span className="text-white/400 group-hover:text-mda-pink transition-colors font-bold">
               cybase ghana
             </span>
           </a>

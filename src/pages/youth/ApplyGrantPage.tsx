@@ -1,20 +1,23 @@
 import {
   ArrowLeft,
   Send,
-  Sparkles,
-  GraduationCap,
-  Briefcase,
   User,
   Mail,
   Phone,
   Calendar,
   Upload,
+  Info,
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 const ApplyGrantPage = () => {
   const [submitted, setSubmitted] = useState(false);
+  const [idFile, setIdFile] = useState<File | null>(null);
+  const [docFile, setDocFile] = useState<File | null>(null);
+
+  const idInputRef = useRef<HTMLInputElement>(null);
+  const docInputRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -22,31 +25,42 @@ const ApplyGrantPage = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const handleIdUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setIdFile(e.target.files[0]);
+    }
+  };
+
+  const handleDocUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setDocFile(e.target.files[0]);
+    }
+  };
+
   if (submitted) {
     return (
-      <div className="bg-mda-cream min-h-screen flex items-center justify-center px-4 py-8 md:p-8">
-        <div className="max-w-2xl w-full glass-card bg-white p-8 md:p-20 rounded-[2.5rem] md:rounded-[4rem] text-center shadow-[0_40px_100px_-20px_rgba(93,26,26,0.15)] border-white space-y-8 md:space-y-12 animate-in fade-in zoom-in duration-1000">
-          <div className="w-20 md:w-28 h-20 md:h-28 bg-mda-maroon rounded-2xl md:rounded-3xl flex items-center justify-center mx-auto shadow-2xl animate-float">
-            <Send className="w-10 md:w-12 h-10 md:h-12 text-mda-pink" />
+      <div className="bg-mda-cream min-h-screen flex items-center justify-center px-4 py-12">
+        <div className="max-w-xl w-full glass-card bg-white p-8 md:p-12 rounded-[2rem] text-center shadow-xl border-white space-y-6 animate-in fade-in zoom-in duration-700">
+          <div className="w-16 h-16 bg-mda-maroon rounded-2xl flex items-center justify-center mx-auto shadow-lg animate-float">
+            <Send className="w-8 h-8 text-mda-pink" />
           </div>
-          <div className="space-y-4 md:space-y-6">
-            <h2 className="text-4xl md:text-6xl font-display text-mda-maroon uppercase tracking-tighter leading-tight md:leading-none">
-              TRANSMISSION <br />{" "}
+          <div className="space-y-3">
+            <h2 className="text-3xl md:text-5xl font-display text-mda-maroon uppercase tracking-tighter leading-tight">
+              SUBMITTED <br />{" "}
               <span className="text-mda-pink italic font-serif normal-case">
-                Complete
+                Successfully
               </span>
             </h2>
-            <p className="font-body text-mda-dark/40 text-lg md:text-xl leading-relaxed">
-              Inquiry received. Our strategic committee will evaluate your
-              credentials and respond via authenticated email within 14
-              protocols.
+            <p className="font-body text-mda-dark/40 text-base md:text-lg leading-relaxed">
+              We have received your application. Our committee will review your
+              details and get back to you via email within 14 working days.
             </p>
           </div>
           <Link
             to="/youth"
-            className="inline-flex glass-card bg-mda-maroon text-white px-10 md:px-16 py-5 md:py-7 rounded-2xl md:rounded-3xl font-bold uppercase tracking-[0.3em] text-[8px] md:text-[10px] hover:bg-mda-pink transition-all shadow-xl"
+            className="inline-flex glass-card bg-mda-maroon text-white px-8 py-4 rounded-xl font-bold uppercase tracking-[0.2em] text-[10px] hover:bg-mda-pink transition-all shadow-md"
           >
-            Return to Hub
+            Back to Youth Hub
           </Link>
         </div>
       </div>
@@ -56,196 +70,271 @@ const ApplyGrantPage = () => {
   return (
     <div className="bg-mda-cream min-h-screen">
       {/* Header */}
-      <section className="relative py-20 md:py-40 bg-mda-maroon overflow-hidden min-h-[40vh] md:min-h-[50vh] flex items-center">
-        {/* Animated Mesh Glows */}
-        <div className="absolute top-0 right-0 w-[400px] md:w-[500px] h-[400px] md:h-[500px] bg-mda-pink/10 rounded-full blur-[80px] md:blur-[100px] pointer-events-none animate-pulse-glow" />
+      <section className="relative py-16 md:py-24 bg-mda-maroon overflow-hidden flex items-center">
+        <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-mda-pink/10 rounded-full blur-[80px] pointer-events-none animate-pulse-glow" />
 
         <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-20 animate-reveal">
           <Link
             to="/youth"
-            className="inline-flex items-center gap-3 text-white/40 hover:text-mda-pink transition-all mb-12 md:mb-16 font-bold uppercase tracking-[0.4em] text-[8px] md:text-[10px] group"
+            className="inline-flex items-center gap-2 text-white/40 hover:text-mda-pink transition-all mb-8 font-bold uppercase tracking-[0.2em] text-[10px] group"
           >
             <ArrowLeft
-              size={16}
-              className="group-hover:-translate-x-2 transition-transform"
+              size={14}
+              className="group-hover:-translate-x-1 transition-transform"
             />
-            Abort to Youth Hub
+            Return to Hub
           </Link>
 
-          <div className="max-w-4xl space-y-8 md:space-y-10 text-center md:text-left">
-            <h1 className="text-6xl md:text-8xl lg:text-[11rem] font-display leading-[0.9] md:leading-[0.8] mb-6 md:mb-8 uppercase text-white tracking-tighter">
+          <div className="max-w-3xl space-y-6 text-center md:text-left">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-display leading-[1] mb-4 uppercase text-white tracking-tighter">
               GRANT <br />{" "}
               <span className="text-mda-pink italic font-serif normal-case text-glow">
-                Protocol
+                Application
               </span>
             </h1>
-            <p className="font-body text-lg md:text-2xl text-white/50 leading-relaxed max-w-2xl border-l md:border-l border-mda-pink/30 pl-6 md:pl-10 mx-auto md:mx-0">
-              Direct allocation for academic excellence and local enterprise
-              scaling. Authenticity of data is mandatory.
+            <p className="font-body text-base md:text-lg text-white/50 leading-relaxed max-w-xl border-l-2 border-mda-pink/30 pl-5">
+              Supporting academic excellence and local business growth. Please
+              provide accurate information to help us process your request.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Form Section */}
-      <section className="py-16 md:py-32 px-4 md:px-8 relative z-20 -mt-16 md:-mt-20 lg:-mt-32">
-        <div className="max-w-4xl mx-auto">
-          <form onSubmit={handleSubmit} className="space-y-12 md:space-y-16">
-            {/* Personal Information */}
-            <div className="glass-card bg-white p-8 md:p-16 lg:p-24 rounded-[2.5rem] md:rounded-[4rem] border-white shadow-[0_40px_100px_-20px_rgba(93,26,26,0.1)] space-y-10 md:space-y-16">
-              <div className="flex items-center gap-4 md:gap-6">
-                <div className="w-12 md:w-16 h-12 md:h-16 bg-mda-maroon rounded-xl md:rounded-2xl flex items-center justify-center text-white shadow-xl">
-                  <User size={24} className="text-mda-pink" />
+      {/* How to Apply Section */}
+      <section className="py-12 md:py-16 px-4 md:px-8 relative z-20">
+        <div className="max-w-3xl mx-auto glass-card bg-white p-6 md:p-10 rounded-[1.5rem] md:rounded-[2rem] border-white shadow-xl space-y-8">
+          <div className="flex items-center gap-4">
+            <div className="w-10 h-10 bg-mda-maroon rounded-xl flex items-center justify-center text-white shadow-md">
+              <Info size={20} className="text-mda-pink" />
+            </div>
+            <div>
+              <h3 className="text-xl md:text-2xl font-display text-mda-maroon uppercase tracking-tight">
+                HOW TO{" "}
+                <span className="text-mda-pink italic font-serif normal-case ml-1">
+                  Apply
+                </span>
+              </h3>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {[
+              {
+                step: "01",
+                title: "Information",
+                desc: "Fill in your full name, date of birth, and contact details.",
+              },
+              {
+                step: "02",
+                title: "Category",
+                desc: "Select if you are applying for Academic or Business support.",
+              },
+              {
+                step: "03",
+                title: "Purpose",
+                desc: "Briefly explain how this grant will help you achieve your goals.",
+              },
+              {
+                step: "04",
+                title: "Documents",
+                desc: "Upload a copy of your ID and any relevant certificates.",
+              },
+            ].map((item) => (
+              <div key={item.step} className="flex gap-4">
+                <span className="font-display text-2xl text-mda-pink/30 italic">
+                  {item.step}
+                </span>
+                <div className="space-y-1">
+                  <h4 className="font-display text-mda-maroon uppercase text-sm tracking-wider">
+                    {item.title}
+                  </h4>
+                  <p className="font-body text-mda-dark/50 text-xs leading-relaxed">
+                    {item.desc}
+                  </p>
                 </div>
-                <div className="space-y-2">
-                  <h3 className="text-2xl md:text-4xl font-display text-mda-maroon uppercase tracking-tighter leading-tight md:leading-none">
-                    PERSONAL <br />
-                    <span className="text-mda-pink italic font-serif normal-case">
-                      Intelligence
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Form Section */}
+      <section className="pb-12 md:pb-20 px-4 md:px-8 relative z-20">
+        <div className="max-w-3xl mx-auto">
+          <form onSubmit={handleSubmit} className="space-y-8 md:space-y-10">
+            {/* Application Form */}
+            <div className="glass-card bg-white p-6 md:p-12 rounded-[1.5rem] md:rounded-[2rem] border-white shadow-xl space-y-8">
+              <div className="flex items-center gap-4">
+                <div className="w-10 h-10 bg-mda-maroon rounded-xl flex items-center justify-center text-white shadow-md">
+                  <User size={20} className="text-mda-pink" />
+                </div>
+                <div>
+                  <h3 className="text-xl md:text-2xl font-display text-mda-maroon uppercase tracking-tight">
+                    APPLICATION{" "}
+                    <span className="text-mda-pink italic font-serif normal-case ml-1">
+                      Information
                     </span>
                   </h3>
-                  <div className="w-8 md:w-12 h-1 bg-mda-pink/30" />
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-                <div className="space-y-3 md:space-y-4">
-                  <label className="text-[8px] md:text-[10px] font-bold uppercase tracking-[0.3em] text-mda-maroon/40 ml-1">
-                    Identity Name
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label className="text-[10px] font-bold uppercase tracking-wider text-mda-maroon/40 ml-1">
+                    Your Full Name
                   </label>
                   <input
                     required
                     type="text"
-                    className="w-full bg-mda-cream/20 border border-mda-maroon/5 rounded-xl md:rounded-2xl py-4 md:py-6 px-6 md:px-8 focus:outline-none focus:border-mda-pink transition-all font-body text-mda-maroon placeholder:text-mda-maroon/20 text-sm md:text-base"
-                    placeholder="Full Legal Name"
+                    className="w-full bg-mda-cream/30 border border-mda-maroon/10 rounded-xl py-3 px-5 focus:outline-none focus:border-mda-pink transition-all font-body text-mda-maroon text-sm"
+                    placeholder="Enter your name"
                   />
                 </div>
-                <div className="space-y-3 md:space-y-4">
-                  <label className="text-[8px] md:text-[10px] font-bold uppercase tracking-[0.3em] text-mda-maroon/40 ml-1">
-                    Birth Protocol
+                <div className="space-y-2">
+                  <label className="text-[10px] font-bold uppercase tracking-wider text-mda-maroon/40 ml-1">
+                    Date of Birth
                   </label>
                   <div className="relative">
                     <input
                       required
                       type="date"
-                      className="w-full bg-mda-cream/20 border border-mda-maroon/5 rounded-xl md:rounded-2xl py-4 md:py-6 px-6 md:px-8 focus:outline-none focus:border-mda-pink transition-all font-body text-mda-maroon text-sm md:text-base"
+                      className="w-full bg-mda-cream/30 border border-mda-maroon/10 rounded-xl py-3 px-5 focus:outline-none focus:border-mda-pink transition-all font-body text-mda-maroon text-sm"
                     />
                     <Calendar
-                      className="absolute right-6 md:right-8 top-1/2 -translate-y-1/2 text-mda-pink/40"
-                      size={18}
+                      className="absolute right-4 top-1/2 -translate-y-1/2 text-mda-pink/40"
+                      size={16}
                     />
                   </div>
                 </div>
-                <div className="space-y-3 md:space-y-4">
-                  <label className="text-[8px] md:text-[10px] font-bold uppercase tracking-[0.3em] text-mda-maroon/40 ml-1">
-                    Transmission Link
+                <div className="space-y-2">
+                  <label className="text-[10px] font-bold uppercase tracking-wider text-mda-maroon/40 ml-1">
+                    Email Address
                   </label>
                   <div className="relative">
                     <input
                       required
                       type="email"
-                      className="w-full bg-mda-cream/20 border border-mda-maroon/5 rounded-xl md:rounded-2xl py-4 md:py-6 px-6 md:px-8 focus:outline-none focus:border-mda-pink transition-all font-body text-mda-maroon placeholder:text-mda-maroon/20 text-sm md:text-base"
+                      className="w-full bg-mda-cream/30 border border-mda-maroon/10 rounded-xl py-3 px-5 focus:outline-none focus:border-mda-pink transition-all font-body text-mda-maroon text-sm"
                       placeholder="email@example.com"
                     />
                     <Mail
-                      className="absolute right-6 md:right-8 top-1/2 -translate-y-1/2 text-mda-pink/40"
-                      size={18}
+                      className="absolute right-4 top-1/2 -translate-y-1/2 text-mda-pink/40"
+                      size={16}
                     />
                   </div>
                 </div>
-                <div className="space-y-3 md:space-y-4">
-                  <label className="text-[8px] md:text-[10px] font-bold uppercase tracking-[0.3em] text-mda-maroon/40 ml-1">
-                    Voice Interface
+                <div className="space-y-2">
+                  <label className="text-[10px] font-bold uppercase tracking-wider text-mda-maroon/40 ml-1">
+                    Phone Number
                   </label>
                   <div className="relative">
                     <input
                       required
                       type="tel"
-                      className="w-full bg-mda-cream/20 border border-mda-maroon/5 rounded-xl md:rounded-2xl py-4 md:py-6 px-6 md:px-8 focus:outline-none focus:border-mda-pink transition-all font-body text-mda-maroon placeholder:text-mda-maroon/20 text-sm md:text-base"
+                      className="w-full bg-mda-cream/30 border border-mda-maroon/10 rounded-xl py-3 px-5 focus:outline-none focus:border-mda-pink transition-all font-body text-mda-maroon text-sm"
                       placeholder="+233 XX XXX XXXX"
                     />
                     <Phone
-                      className="absolute right-6 md:right-8 top-1/2 -translate-y-1/2 text-mda-pink/40"
-                      size={18}
+                      className="absolute right-4 top-1/2 -translate-y-1/2 text-mda-pink/40"
+                      size={16}
                     />
                   </div>
                 </div>
-              </div>
-            </div>
 
-            {/* Grant Details */}
-            <div className="glass-card bg-white p-8 md:p-16 lg:p-24 rounded-[2.5rem] md:rounded-[4rem] border-white shadow-[0_40px_100px_-20px_rgba(93,26,26,0.1)] space-y-10 md:space-y-16">
-              <div className="flex items-center gap-4 md:gap-6">
-                <div className="w-12 md:w-16 h-12 md:h-16 bg-mda-maroon rounded-xl md:rounded-2xl flex items-center justify-center text-white shadow-xl">
-                  <Sparkles size={24} className="text-mda-pink" />
-                </div>
-                <div className="space-y-2">
-                  <h3 className="text-2xl md:text-4xl font-display text-mda-maroon uppercase tracking-tighter leading-tight md:leading-none">
-                    FUNDING <br />
-                    <span className="text-mda-pink italic font-serif normal-case">
-                      Blueprint
-                    </span>
-                  </h3>
-                  <div className="w-8 md:w-12 h-1 bg-mda-pink/30" />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-8">
-                {[
-                  { id: "academic", icon: GraduationCap, label: "Academic" },
-                  { id: "business", icon: Briefcase, label: "Enterprise" },
-                  { id: "skills", icon: Sparkles, label: "Visual Art" },
-                ].map((type) => (
-                  <label
-                    key={type.id}
-                    className="relative cursor-pointer group"
-                  >
-                    <input
-                      type="radio"
-                      name="grant_type"
-                      className="peer sr-only"
-                      required
-                    />
-                    <div className="p-6 md:p-10 glass-card bg-mda-cream/20 border-mda-maroon/5 rounded-[2rem] md:rounded-[3rem] text-center space-y-4 md:space-y-6 peer-checked:bg-mda-maroon peer-checked:text-white transition-all duration-500 group-hover:bg-mda-cream active:scale-95">
-                      <div className="w-12 md:w-16 h-12 md:h-16 bg-white rounded-xl md:rounded-2xl flex items-center justify-center mx-auto shadow-sm group-hover:scale-110 transition-transform">
-                        <type.icon className="w-7 md:w-8 h-7 md:h-8 text-mda-pink" />
-                      </div>
-                      <span className="block font-bold uppercase tracking-[0.3em] text-[8px] md:text-[10px]">
-                        {type.label}
-                      </span>
-                    </div>
+                <div className="space-y-2 md:col-span-2">
+                  <label className="text-[10px] font-bold uppercase tracking-wider text-mda-maroon/40 ml-1">
+                    Grant Category
                   </label>
-                ))}
+                  <select
+                    required
+                    className="w-full bg-mda-cream/30 border border-mda-maroon/10 rounded-xl py-3 px-5 focus:outline-none focus:border-mda-pink transition-all font-body text-mda-maroon text-sm appearance-none cursor-pointer"
+                  >
+                    <option value="" disabled selected>
+                      Select a category
+                    </option>
+                    <option value="academic">Academic (Education)</option>
+                    <option value="business">Business (Enterprise)</option>
+                    <option value="vocational">
+                      Vocational (Skills Training)
+                    </option>
+                  </select>
+                </div>
               </div>
 
-              <div className="space-y-3 md:space-y-4">
-                <label className="text-[8px] md:text-[10px] font-bold uppercase tracking-[0.3em] text-mda-maroon/40 ml-1">
-                  Blueprint Narrative
-                </label>
-                <textarea
-                  required
-                  rows={6}
-                  className="w-full bg-mda-cream/20 border border-mda-maroon/5 rounded-[2rem] md:rounded-[3rem] py-6 md:py-8 px-6 md:px-10 focus:outline-none focus:border-mda-pink transition-all font-body text-mda-maroon placeholder:text-mda-maroon/20 resize-none text-sm md:text-base"
-                  placeholder="Articulate your vision, impact metrics, and objective rationale..."
-                />
-              </div>
+              <div className="space-y-4 pt-4 border-t border-mda-maroon/5">
+                <div className="space-y-2">
+                  <label className="text-[10px] font-bold uppercase tracking-wider text-mda-maroon/40 ml-1">
+                    Purpose of Grant
+                  </label>
+                  <textarea
+                    required
+                    rows={4}
+                    className="w-full bg-mda-cream/30 border border-mda-maroon/10 rounded-2xl py-4 px-6 focus:outline-none focus:border-mda-pink transition-all font-body text-mda-maroon text-sm resize-none"
+                    placeholder="Tell us about your goals and how this grant will help you..."
+                  />
+                </div>
 
-              <div className="space-y-3 md:space-y-4">
-                <label className="text-[8px] md:text-[10px] font-bold uppercase tracking-[0.3em] text-mda-maroon/40 ml-1">
-                  Authenticated Data (ID, Credentials)
-                </label>
-                <div className="border-4 border-dotted border-mda-maroon/5 rounded-[2rem] md:rounded-[4rem] p-8 md:p-20 text-center space-y-6 md:space-y-8 hover:border-mda-pink/20 transition-all cursor-pointer group bg-mda-cream/5">
-                  <div className="w-16 md:w-20 h-16 md:h-20 bg-white rounded-2xl md:rounded-3xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform shadow-xl">
-                    <Upload className="text-mda-pink" size={28} />
-                  </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-mda-maroon/5">
                   <div className="space-y-2">
-                    <p className="font-display text-xl md:text-2xl text-mda-maroon uppercase italic tracking-tighter">
-                      Drag Protocol Files
-                    </p>
-                    <p className="font-body text-mda-dark/30 text-xs md:text-sm">
-                      Max file size:{" "}
-                      <span className="text-mda-maroon">50MB</span>
-                    </p>
+                    <label className="text-[10px] font-bold uppercase tracking-wider text-mda-maroon/40 ml-1">
+                      Upload ID (Ghana Card / Passport)
+                    </label>
+                    <input
+                      type="file"
+                      ref={idInputRef}
+                      className="hidden"
+                      onChange={handleIdUpload}
+                      accept="image/*,.pdf"
+                    />
+                    <div
+                      onClick={() => idInputRef.current?.click()}
+                      className="border-2 border-dashed border-mda-maroon/10 rounded-2xl p-6 text-center space-y-3 hover:border-mda-pink/30 transition-all cursor-pointer group bg-mda-cream/10"
+                    >
+                      <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center mx-auto shadow-md">
+                        <Upload className="text-mda-pink" size={18} />
+                      </div>
+                      <div>
+                        <p className="font-display text-base text-mda-maroon uppercase italic tracking-tight">
+                          {idFile ? idFile.name : "Click to Upload ID"}
+                        </p>
+                        <p className="font-body text-mda-dark/30 text-[10px]">
+                          {idFile
+                            ? `${(idFile.size / 1024 / 1024).toFixed(2)}MB`
+                            : "Max file size: 10MB"}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-bold uppercase tracking-wider text-mda-maroon/40 ml-1">
+                      Upload Certificates / Business Docs
+                    </label>
+                    <input
+                      type="file"
+                      ref={docInputRef}
+                      className="hidden"
+                      onChange={handleDocUpload}
+                      accept="image/*,.pdf,.doc,.docx"
+                    />
+                    <div
+                      onClick={() => docInputRef.current?.click()}
+                      className="border-2 border-dashed border-mda-maroon/10 rounded-2xl p-6 text-center space-y-3 hover:border-mda-pink/30 transition-all cursor-pointer group bg-mda-cream/10"
+                    >
+                      <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center mx-auto shadow-md">
+                        <Upload className="text-mda-pink" size={18} />
+                      </div>
+                      <div>
+                        <p className="font-display text-base text-mda-maroon uppercase italic tracking-tight">
+                          {docFile ? docFile.name : "Upload Documents"}
+                        </p>
+                        <p className="font-body text-mda-dark/30 text-[10px]">
+                          {docFile
+                            ? `${(docFile.size / 1024 / 1024).toFixed(2)}MB`
+                            : "Relevant proof or certificates"}
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -253,28 +342,31 @@ const ApplyGrantPage = () => {
 
             <button
               type="submit"
-              className="w-full premium-gradient text-white py-6 md:py-10 rounded-[2rem] md:rounded-[3rem] font-display text-2xl md:text-4xl uppercase tracking-[0.3em] shadow-[0_40px_80px_-20px_rgba(93,26,26,0.25)] hover:-translate-y-2 active:scale-[0.98] transition-all flex items-center justify-center gap-4 md:gap-6 group"
+              className="w-full premium-gradient text-white py-5 rounded-2xl font-display text-xl uppercase tracking-[0.2em] shadow-lg hover:-translate-y-1 active:scale-95 transition-all flex items-center justify-center gap-3 group"
             >
-              Finalize Submission
-              <Send className="w-8 md:w-9 h-8 md:h-9 group-hover:translate-x-3 transition-transform" />
+              Submit Application
+              <Send
+                className="w-6 h-6 group-hover:translate-x-1 transition-transform"
+                size={20}
+              />
             </button>
           </form>
         </div>
       </section>
 
       {/* Footer Note */}
-      <section className="py-20 md:py-40 bg-mda-cream border-t border-mda-maroon/5">
-        <div className="max-w-4xl mx-auto px-4 md:px-8 text-center space-y-8 md:space-y-12">
-          <h4 className="text-3xl md:text-5xl text-mda-maroon font-display uppercase italic tracking-tighter">
-            Protocol Support
+      <section className="py-16 md:py-20 bg-mda-cream border-t border-mda-maroon/5">
+        <div className="max-w-2xl mx-auto px-4 md:px-8 text-center space-y-6">
+          <h4 className="text-2xl md:text-3xl text-mda-maroon font-display uppercase italic tracking-tighter">
+            Need Help?
           </h4>
-          <p className="font-body text-mda-dark/40 text-lg md:text-xl leading-relaxed">
-            For systematic inquiries regarding eligibility or technical
-            transmission issues, contact the Hub Directorate.
+          <p className="font-body text-mda-dark/50 text-base leading-relaxed">
+            If you have any questions about the application or face any issues,
+            please contact us.
           </p>
           <a
             href="mailto:youth@mdagh.org"
-            className="inline-block glass-card bg-mda-maroon text-mda-pink px-10 md:px-12 py-4 md:py-5 rounded-xl md:rounded-2xl font-bold uppercase tracking-[0.3em] text-[8px] md:text-[10px] hover:bg-mda-pink hover:text-white transition-all"
+            className="inline-block glass-card bg-mda-maroon text-mda-pink px-8 py-3 rounded-xl font-bold text-[10px] hover:bg-mda-pink hover:text-white transition-all"
           >
             youth@mdagh.org
           </a>

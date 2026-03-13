@@ -207,7 +207,7 @@ const YouthPage = () => {
               <h3 className="text-5xl font-display uppercase italic tracking-tighter leading-none">
                 Academic <br /> <span className="text-mda-pink">Grants</span>
               </h3>
-              <p className="font-body text-xl text-white/50 leading-relaxed group-hover:text-white/70 transition-colors">
+              <p className="font-body text-xl text-black/50 leading-relaxed group-hover:text-black/70 transition-colors">
                 Unlocking potential through direct academic funding, prize
                 protocols, and specialized educational mentorship.
               </p>

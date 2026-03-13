@@ -37,7 +37,7 @@ const CulturePage = () => {
         </div>
       </section>
 
-      {/* The Seven Clans */}
+      {/* The Five Clans */}
       <section className="relative py-20 md:py-40 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_2.5fr] gap-16 lg:gap-24 items-start">
@@ -47,48 +47,39 @@ const CulturePage = () => {
                   Indigenous Core
                 </div>
                 <h2 className="text-5xl md:text-7xl font-display text-mda-maroon leading-[0.9] lg:leading-[0.8] uppercase tracking-tighter">
-                  THE SEVEN <br />
+                  THE FIVE <br />
                   <span className="text-mda-pink italic font-serif normal-case text-glow">
                     Pillars
                   </span>
                 </h2>
               </div>
               <p className="font-body text-lg md:text-xl text-mda-dark/50 leading-relaxed max-w-sm mx-auto lg:mx-0">
-                The foundation of Mepe unity is built upon seven sacred
-                lineages, each with its own distinct stool and historical
-                mandate.
+                The foundation of Mepe unity is built upon five sacred lineages,
+                each with its own distinct stool and historical mandate.
               </p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
               {[
                 {
-                  name: "Adzigo",
-                  desc: "The custodian of the Paramount Seat.",
-                },
-                {
-                  name: "Akovie",
-                  desc: "Founding lineage and historical protectors.",
+                  name: "Gbanvie",
+                  desc: "A core pillar of the Mepe traditional state.",
                 },
                 {
                   name: "Dzagbaku",
                   desc: "Key traditional authority and landowners.",
                 },
                 {
+                  name: "Akorvie",
+                  desc: "Founding lineage and historical protectors.",
+                },
+                {
                   name: "Sevie",
                   desc: "Essential clan in the traditional hierarchy.",
                 },
                 {
-                  name: "Gborta",
-                  desc: "Protectors of cultural rites and norms.",
-                },
-                {
-                  name: "Dzrakpo",
-                  desc: "Vital lineage in traditional governance.",
-                },
-                {
-                  name: "Kpomkpo",
-                  desc: "Sacred carriers of ancestral history.",
+                  name: "Dzoxornu",
+                  desc: "Protectors of cultural rites and ancestral heritage.",
                 },
               ].map((clan, i) => (
                 <div

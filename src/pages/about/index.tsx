@@ -92,7 +92,7 @@ const AboutPage = () => {
             {
               role: "Clan Heads",
               title: "Togbe / Mama",
-              desc: "Leaders of the seven clans responsible for local governance.",
+              desc: "Leaders of the five clans responsible for local governance.",
             },
             {
               role: "The Council",

@@ -29,11 +29,10 @@ const History = () => {
                 balances venerable tradition with a forward-looking spirit.
               </p>
               <p>
-                From our ancestral migrations to the establishment of our seven
-                clans, every milestone has been marked by unity. The legendary
-                "Apetorku" deity remains a symbol of our spiritual strength,
-                while our annual festival celebrates our victory over challenges
-                and our commitment to progress.
+                From our ancestral migrations to the establishment of our five
+                clans, every milestone has been marked by unity. Our annual
+                festival celebrates our victory over challenges and our
+                commitment to progress.
               </p>
               <p className="font-semibold text-mda-maroon">
                 Today, Mepe stands as a beacon of cultural pride, inviting the
@@ -68,7 +67,7 @@ const History = () => {
             </div>
             <div className="absolute -bottom-4 md:-bottom-6 -left-4 md:-left-6 bg-mda-maroon p-4 md:p-6 rounded-xl md:rounded-2xl shadow-xl z-20 hidden sm:block">
               <span className="block text-xl md:text-2xl font-display text-mda-pink leading-none">
-                SEVEN CLANS
+                FIVE CLANS
               </span>
               <span className="text-[8px] md:text-[10px] uppercase font-bold tracking-widest text-white/60">
                 United as One
