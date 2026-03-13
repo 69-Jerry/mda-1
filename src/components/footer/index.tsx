@@ -156,11 +156,11 @@ const Footer = () => {
 
       {/* Bottom Bar */}
       <div className="max-w-7xl mx-auto px-8 pt-12 border-t border-white/50 flex flex-col lg:flex-row justify-between items-center gap-8 relative z-10">
-        <div className="text-[9px] font-bold tracking-[0.4em] text-white/100 uppercase font-body text-center lg:text-left">
+        <div className="text-[12px] font-bold text-white/100 uppercase font-body text-center lg:text-left">
           &copy; {currentYear} MEPE DEVELOPMENT ASSOCIATION.{" "}
         </div>
 
-        <div className="flex flex-wrap justify-center gap-10 text-[9px] font-bold tracking-[0.3em] text-white/100 uppercase font-body">
+        <div className="flex flex-wrap justify-center gap-10 text-[12px] text-white/100 font-body">
           <Link
             to="/privacy-policy"
             className="hover:text-mda-pink transition-colors"
@@ -181,7 +181,7 @@ const Footer = () => {
           >
             Designed & Developed by{" "}
             <span className="text-white/400 group-hover:text-mda-pink transition-colors font-bold">
-              cybase ghana
+              CYBASE GHANA
             </span>
           </a>
         </div>
